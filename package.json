@@ -17,9 +17,11 @@
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "html-webpack-plugin": "^2.21.0"
+  },
   "scripts": {
-    "dev": "webpack-dev-server --content-base src --inline --hot",
+    "dev": "webpack-dev-server --content-base out --inline --hot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tim van Osch & Kieron Wiltshire",
