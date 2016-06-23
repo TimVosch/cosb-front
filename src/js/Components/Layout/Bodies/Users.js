@@ -3,6 +3,7 @@ import { EventEmitter } from 'events';
 
 import UserListPanel from '../../UserListPanel';
 import UserPropertiesPanel from '../../UserPropertiesPanel';
+import UserSearchPanel from '../../UserSearchPanel';
 
 export default class UsersBody extends React.Component {
     
@@ -15,7 +16,7 @@ export default class UsersBody extends React.Component {
     }
     
     onUserSelect(uuid) {
-        this.selectedUserEventEmitter.emit("selectedUserChange", uuid);
+        this.selectedUserEventEmitter.emit("userSelect", uuid);
     }
     
     render() {
@@ -32,7 +33,7 @@ export default class UsersBody extends React.Component {
                         <UserListPanel onUserSelect={this.onUserSelect.bind(this)}/>
                     </div>
                     <div class="col-sm-12 col-lg-4">
-                        <UserPropertiesPanel uuid={this.state.selectedUserID} eventEmitter={this.selectedUserEventEmitter}/>
+                        <UserPropertiesPanel eventEmitter={this.selectedUserEventEmitter}/>
                     </div>
                 </div>
             </div>

@@ -13,7 +13,7 @@ export default class UserPropertiesPanel extends React.Component {
     
     componentWillMount() {
         if (this.props.eventEmitter !== undefined) {
-            this.props.eventEmitter.on("selectedUserChange", (uuid) => {
+            this.props.eventEmitter.on("userSelect", (uuid) => {
                 this.setState({
                     uuid
                 });
