@@ -2,6 +2,7 @@ var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path');
+var SentinelConfiguration = require('./sentinel_config.json');
 
 module.exports = {
   context: path.join(__dirname, "src"),
@@ -31,6 +32,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './index.html'
+    }),
+    new webpack.DefinePlugin({
+      "sentinel.config": SentinelConfiguration
     })
   ] : [
     new webpack.optimize.DedupePlugin(),
