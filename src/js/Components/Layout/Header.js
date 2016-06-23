@@ -29,7 +29,8 @@ export default class Header extends React.Component {
                     <div class="sidebar-nav navbar-collapse" aria-expanded="false">
                         <ul class="nav in" id="side-menu">
                             <li><IndexLink to="/" activeClassName="active">Dashboard</IndexLink></li>
-                            <li><Link to="/about" activeClassName="active">About</Link></li>
+                            <li><Link to="/users" activeClassName="active">Users</Link></li>
+                            <li><Link to="/authorization" activeClassName="active">Authentication</Link></li>
                         </ul>
                     </div>
                 </div>
