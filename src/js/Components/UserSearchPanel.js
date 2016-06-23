@@ -12,6 +12,14 @@ export default class UsersearchPanel extends React.Component {
     }
     
     componentWillMount() {
+        if (this.props.eventEmitter !== undefined) {
+            this.props.eventEmitter.on("userSelect", (uuid, username) => {
+                this.setState({
+                    uuid,
+                    username
+                });
+            });
+        } 
         this.callback = this.props.onUserSelect;
     }
     
@@ -34,7 +42,7 @@ export default class UsersearchPanel extends React.Component {
                         uuid: data.id,
                         username: data.name
                     });
-                    this.callback(data.id);
+                    this.callback(data.id, data.name);
                 }
             });
         }, sentinel.config.autoSearchDelay);

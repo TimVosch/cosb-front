@@ -1,6 +1,8 @@
 import React from 'react';
 import { EventEmitter } from 'events';
 
+import UserStore from '../../../Stores/UserStore';
+
 import UserListPanel from '../../UserListPanel';
 import UserPropertiesPanel from '../../UserPropertiesPanel';
 import UserSearchPanel from '../../UserSearchPanel';
@@ -9,14 +11,14 @@ export default class UsersBody extends React.Component {
     
     constructor() {
         super();
-        this.state = {
-            selectedUserID: undefined
-        }
         this.selectedUserEventEmitter = new EventEmitter;
     }
     
-    onUserSelect(uuid) {
-        this.selectedUserEventEmitter.emit("userSelect", uuid);
+    onUserSelect(uuid, username) {
+        if (username === undefined) {
+            UserStore.getUsername(uuid, this.onUserSelect.bind(this));
+        }
+        this.selectedUserEventEmitter.emit("userSelect", uuid, username);
     }
     
     render() {
@@ -33,7 +35,7 @@ export default class UsersBody extends React.Component {
                         <UserListPanel onUserSelect={this.onUserSelect.bind(this)}/>
                     </div>
                     <div class="col-sm-12 col-lg-4">
-                        <UserSearchPanel onUserSelect={this.onUserSelect.bind(this)}/>
+                        <UserSearchPanel onUserSelect={this.onUserSelect.bind(this)} eventEmitter={this.selectedUserEventEmitter}/>
                         <UserPropertiesPanel eventEmitter={this.selectedUserEventEmitter}/>
                     </div>
                 </div>
