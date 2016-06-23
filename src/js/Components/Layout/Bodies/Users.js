@@ -33,6 +33,7 @@ export default class UsersBody extends React.Component {
                         <UserListPanel onUserSelect={this.onUserSelect.bind(this)}/>
                     </div>
                     <div class="col-sm-12 col-lg-4">
+                        <UserSearchPanel onUserSelect={this.onUserSelect.bind(this)}/>
                         <UserPropertiesPanel eventEmitter={this.selectedUserEventEmitter}/>
                     </div>
                 </div>
