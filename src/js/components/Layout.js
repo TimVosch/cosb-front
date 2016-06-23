@@ -1,16 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import Header from './Header';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+
 import Body from './Body';
+import DashboardBody from './Bodies/Dashboard';
+import AboutBody from './Bodies/About';
 
 export default class Layout extends React.Component {
     render() {
         return (
-            <div class="wrapper">
-                <Header/>
-                <Body/>
-            </div>
+            <Router history={hashHistory}>
+                <Route path="/" component={Body}>
+                    <IndexRoute component={DashboardBody}/>
+                    <Route path="/About" component={AboutBody}/>
+                </Route>
+            </Router>
         );
     }
 }

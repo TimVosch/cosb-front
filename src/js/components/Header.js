@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import { Link, IndexLink } from 'react-router';
+
 export default class Header extends React.Component {
     
     componentWillMount() {
@@ -10,7 +12,6 @@ export default class Header extends React.Component {
     render() {
         return (
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style={this.navStyle}>
-            
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
@@ -18,24 +19,17 @@ export default class Header extends React.Component {
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="/" class="navbar-brand">Dracade</a>
+                    <a href="/" class="navbar-brand">Sentinel</a>
                 </div>
+                
+                <ul class="nav navbar-top-links navbar-right">
+                </ul>
                 
                 <div class="navbar-default sidebar" role="navigation">
                     <div class="sidebar-nav navbar-collapse" aria-expanded="false">
                         <ul class="nav in" id="side-menu">
-                            <li>
-                                <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                            </li>
-                            <li>
-                                <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                            </li>
-                            <li>
-                                <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                            </li>
-                            <li>
-                                <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                            </li>
+                            <li><IndexLink to="/" activeClassName="active">Dashboard</IndexLink></li>
+                            <li><Link to="/about" activeClassName="active">About</Link></li>
                         </ul>
                     </div>
                 </div>
