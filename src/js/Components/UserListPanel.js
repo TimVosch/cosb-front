@@ -1,26 +1,29 @@
 import React from 'react';
-import UserStore from '../Stores/UserStore';
 
 export default class UserListPanel extends React.Component {
     
     constructor() {
         super();
-        this.state = { users:UserStore.getAllUsers() };
+        this.state = { users:[]};
     }
     
     componentWillMount() {
-        UserStore.on("change", () => {
-            this.setState({
-                users: UserStore.getAllUsers()
+        if (this.props.eventEmitter !== undefined) {
+            this.props.eventEmitter.on("user-list-change", (users) => {
+                this.setState({users});
             });
-        });
+        } 
     }
     
     // Fired when the select button is pressed
-    selectUser(uuid) {
-        if (this.props.onUserSelect !== undefined) {
-            this.props.onUserSelect(uuid);
-        }
+    onUserSelectClick(uuid) {
+        if (this.props.onUserSelect)
+            this.props.onUserSelect({uuid});
+    }
+    
+    onRefreshClick() {
+        if (this.props.onRefreshClick)
+            this.props.onRefreshClick();
     }
     
     render() {
@@ -29,7 +32,7 @@ export default class UserListPanel extends React.Component {
                 <div class="panel-heading">
                     <strong>User list</strong>
                     <div class="pull-right">
-                        <a class="btn btn-default btn-xs" onClick={UserStore.pullNewData.bind(UserStore)}>R</a>
+                        <a class="btn btn-default btn-xs" onClick={this.onRefreshClick.bind(this)}>R</a>
                     </div>
                 </div>
                 <div class="panel-body">
@@ -51,7 +54,7 @@ export default class UserListPanel extends React.Component {
                                             <td>{user.id}</td>
                                             <td>{user.uuid}</td>
                                             <td>{user.createdAt}</td>
-                                            <td style={{textAlign:"right"}}><button class="btn btn-success" onClick={this.selectUser.bind(this, user.uuid)}>Select</button></td>
+                                            <td style={{textAlign:"right"}}><button class="btn btn-success" onClick={this.onUserSelectClick.bind(this, user.uuid)}>Select</button></td>
                                         </tr>
                                     );
                                 }.bind(this))}

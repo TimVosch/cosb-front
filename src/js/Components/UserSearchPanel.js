@@ -7,8 +7,10 @@ export default class UsersearchPanel extends React.Component {
     constructor() {
         super();
         this.state = {
-            uuid: undefined,
-            username: "None"
+            user: {
+                uuid: undefined,
+                username: "None"
+            }
         }
         this.searchTimout = undefined;
     }
@@ -16,14 +18,10 @@ export default class UsersearchPanel extends React.Component {
     componentWillMount() {
         // Bind to the EventEmitter on props if available
         if (this.props.eventEmitter !== undefined) {
-            this.props.eventEmitter.on("userSelect", (uuid, username) => {
-                this.setState({
-                    uuid,
-                    username
-                });
+            this.props.eventEmitter.on("selected-user-change", (user) => {
+                this.setState({user});
             });
         } 
-        this.callback = this.props.onUserSelect;
     }
     
     searchInputChanged(e) {
@@ -35,6 +33,7 @@ export default class UsersearchPanel extends React.Component {
         }
         this.searchTimout = setTimeout(() => {
                 this.searchTimout = undefined;
+                this.props.onUserSelect({username});
             }, sentinel.config.autoSearchDelay);
     }
     
@@ -49,11 +48,11 @@ export default class UsersearchPanel extends React.Component {
                     </div>
                     <div class="row" style={{marginTop: "5px"}}>
                         <div class="col-sm-4"><strong>Username</strong></div>  
-                        <div class="col-sm-8">{this.state.username}</div>                    
+                        <div class="col-sm-8">{this.state.user.username}</div>                    
                     </div>
                     <div class="row">
                         <div class="col-sm-4"><strong>UUID</strong></div>  
-                        <div class="col-sm-8">{this.state.uuid || "None"}</div>                    
+                        <div class="col-sm-8">{this.state.user.uuid || "None"}</div>                    
                     </div>
                 </div>
             </div>
