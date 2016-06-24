@@ -1,5 +1,7 @@
 import React from 'react';
 
+import UserActions from '../Actions/UserActions';
+
 export default class UsersearchPanel extends React.Component {
     
     constructor() {
@@ -12,6 +14,7 @@ export default class UsersearchPanel extends React.Component {
     }
     
     componentWillMount() {
+        // Bind to the EventEmitter on props if available
         if (this.props.eventEmitter !== undefined) {
             this.props.eventEmitter.on("userSelect", (uuid, username) => {
                 this.setState({
@@ -24,28 +27,15 @@ export default class UsersearchPanel extends React.Component {
     }
     
     searchInputChanged(e) {
-        var value = e.target.value;
-        if (value == "") return;
+        var username = e.target.value;
+        if (username == "") return;
         
         if (this.searchTimout !== undefined) {
             clearTimeout(this.searchTimout);
         }
         this.searchTimout = setTimeout(() => {
-            this.searchTimout = undefined;
-            $.ajax({
-                url: "https://api.mojang.com/users/profiles/minecraft/" + value,
-                type: "GET",
-                success: (data) => {
-                    console.log(data);
-                    if (data == "") return;
-                    this.setState({
-                        uuid: data.id,
-                        username: data.name
-                    });
-                    this.callback(data.id, data.name);
-                }
-            });
-        }, sentinel.config.autoSearchDelay);
+                this.searchTimout = undefined;
+            }, sentinel.config.autoSearchDelay);
     }
     
     render() {
