@@ -1,7 +1,7 @@
 import Dispatcher from '../Dispatcher';
 
 export default {
-    
+
     // Completes a user object based upon the uuid or username
     selectUser(user) {
         if (user.uuid && user.username) return; // Useless call?
@@ -31,7 +31,7 @@ export default {
     },
 
     pullNewData() {
-        $.get("http://localhost:8888/api/user", (data) => {
+        $.get("http://localhost:8000/api/user", (data) => {
             if (!data) return;
             Dispatcher.dispatch({
                 type: "DATA_REST_USER_LIST",

@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {
+  "devDependencies": {
+    "css-loader": "^0.23.1",
+    "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.21.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack-dev-server": "^1.14.1",
     "babel-loader": "^6.2.0",
     "babel-plugin-add-module-exports": "^0.1.2",
     "babel-plugin-react-html-attrs": "^2.0.0",
@@ -19,16 +25,9 @@
     "react-router": "^2.5.0",
     "webpack": "^1.12.9"
   },
-  "devDependencies": {
-    "css-loader": "^0.23.1",
-    "file-loader": "^0.9.0",
-    "html-webpack-plugin": "^2.21.0",
-    "style-loader": "^0.13.1",
-    "url-loader": "^0.5.7",
-    "webpack-dev-server": "^1.14.1"
-  },
   "scripts": {
-    "dev": "webpack-dev-server --content-base out --inline --hot",
+    "build": "webpack",
+    "dev": "webpack-dev-server --content-base dist --inline --hot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tim van Osch & Kieron Wiltshire",
