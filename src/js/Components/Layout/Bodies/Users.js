@@ -29,7 +29,7 @@ export default class UsersBody extends React.Component {
             switch(data.type) {
                 case "DATA_MOJANG_USER_INFO":
                     if (this.state.selectedUser.uuid == data.user.uuid
-                            || this.state.selectedUser.username == data.user.username) {
+                            || this.state.selectedUser.username.toLowerCase() == data.user.username.toLowerCase()) {
                                 this.setState({selectedUser:data.user});
                                 this.eventEmitter.emit("selected-user-change", data.user);
                             }
