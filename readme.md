@@ -5,7 +5,7 @@
 - Enable [Cross-Origin Resource Sharing (CORS)][1] in your browser of choice (through an extension)\*.
 - Either execute the `npm run dev` command to setup a development suite
 
-\* **Note** Allowing every Cross-Origin request can be dangerous, make sure to disable the plugin after development!
+\* **Note** Allowing every Cross-Origin request can be dangerous, make sure to disable the extension after development!
 
 Development
 ----
@@ -24,7 +24,7 @@ License
     MIT License
     
     Copyright (c) 2016 Cosb
-        
+    
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
     in the Software without restriction, including without limitation the rights
