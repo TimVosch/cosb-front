@@ -47,7 +47,7 @@ export default {
     },
 
     pullNewData() {
-        $.get("http://" + corb.config.backendEndPoint + "/api/user", (data) => {
+        $.get("http://" + corb.config.api.url + cob.config.api.version + "/user", (data) => {
             if (!data) {
                 console.error("No data received in pullNewData()", data);
                 return;

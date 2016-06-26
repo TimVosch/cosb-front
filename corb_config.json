@@ -1,6 +1,7 @@
 {
-    "backend": {
-        "backendEndPoint": "localhost:8000"
+    "api": {
+        "url": "localhost:8000/api/", // contains trailing slash!
+        "version": "v1"
     },
     "defaultPageTitle": "Corb Panel",
     "autoSearchDelay": 400
