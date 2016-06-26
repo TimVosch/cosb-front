@@ -2,7 +2,7 @@ var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path');
-var SentinelConfiguration = require('./sentinel_config.json');
+var CorbConfiguration = require('./corb_config.json');
 
 module.exports = {
   context: path.join(__dirname, "src"),
@@ -34,14 +34,14 @@ module.exports = {
       template: './index.html'
     }),
     new webpack.DefinePlugin({
-      "sentinel.config": SentinelConfiguration
+      "corb.config": CorbConfiguration
     })
   ] : [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
     new webpack.DefinePlugin({
-      "sentinel.config": SentinelConfiguration
+      "corb.config": CorbConfiguration
     })
   ],
 };

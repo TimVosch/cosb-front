@@ -32,7 +32,7 @@ export default class UsersearchPanel extends React.Component {
         this.searchTimout = setTimeout(() => {
                 this.searchTimout = undefined;
                 this.props.onUserSelect({username});
-            }, sentinel.config.autoSearchDelay);
+            }, corb.config.autoSearchDelay);
     }
     
     render() {
