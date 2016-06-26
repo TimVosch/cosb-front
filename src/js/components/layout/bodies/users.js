@@ -1,14 +1,14 @@
 import React from 'react';
 import { EventEmitter } from 'events';
 
-import Dispatcher from '../../../Dispatcher';
+import Dispatcher from '../../../dispatcher';
 
-import UserActions from '../../../Actions/UserActions';
-import UserStore from '../../../Stores/UserStore';
+import UserActions from '../../../actions/user-actions';
+import UserStore from '../../../stores/user-store';
 
-import UserListPanel from '../../UserListPanel';
-import UserPropertiesPanel from '../../UserPropertiesPanel';
-import UserSearchPanel from '../../UserSearchPanel';
+import UserListPanel from '../../user-list-panel';
+import UserPropertiesPanel from '../../user-properties-panel';
+import UserSearchPanel from '../../user-search-panel';
 
 export default class UsersBody extends React.Component {
     

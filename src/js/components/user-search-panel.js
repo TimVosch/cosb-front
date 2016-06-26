@@ -1,7 +1,5 @@
 import React from 'react';
 
-import UserActions from '../Actions/UserActions';
-
 export default class UsersearchPanel extends React.Component {
     
     constructor() {
