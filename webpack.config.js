@@ -30,6 +30,7 @@ module.exports = {
   },
   plugins: debug ? [
     new HtmlWebpackPlugin({
+      title: CorbConfiguration.defaultPageTitle,
       filename: 'index.html',
       template: './index.html'
     }),
