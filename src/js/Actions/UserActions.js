@@ -1,7 +1,7 @@
 import Dispatcher from '../Dispatcher';
 
 export default {
-    
+
     // Completes a user object based upon the uuid or username
     populateUser(user) {
         if (user.uuid && user.username) {
@@ -47,7 +47,7 @@ export default {
     },
 
     pullNewData() {
-        $.get("http://localhost:8888/api/user", (data) => {
+        $.get("http://localhost:8000/api/user", (data) => {
             if (!data) {
                 console.error("No data received in pullNewData()", data);
                 return;
