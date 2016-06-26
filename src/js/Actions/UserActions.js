@@ -3,11 +3,17 @@ import Dispatcher from '../Dispatcher';
 export default {
     
     // Completes a user object based upon the uuid or username
-    selectUser(user) {
-        if (user.uuid && user.username) return; // Useless call?
+    populateUser(user) {
+        if (user.uuid && user.username) {
+            console.error("User is missing uuid and username in populateUser()", user);
+            return;
+        }
         if (user.uuid) {
             $.get("https://api.mojang.com/user/profiles/" + user.uuid + "/names", (data) => {
-                if (!data) return;
+                if (!data) {
+                    console.error("No data received in populateUser()", data);
+                    return;
+                }
                 Dispatcher.dispatch({
                     type: "DATA_MOJANG_USER_INFO",
                     user: {
@@ -18,7 +24,10 @@ export default {
             });
         } else if (user.username) {
              $.get("https://api.mojang.com/users/profiles/minecraft/" + user.username, (data) => {
-                if (!data) return;
+                if (!data) {
+                    console.error("No data received in populateUser()", data);
+                    return;
+                }
                 Dispatcher.dispatch({
                     type: "DATA_MOJANG_USER_INFO",
                     user: {
@@ -30,9 +39,19 @@ export default {
         }
     },
 
+    getRole(user) {
+        if (!user.uuid) {
+            console.error("UUID is not specified on user in getRole(): ", user);
+            return;
+        }
+    },
+
     pullNewData() {
         $.get("http://localhost:8888/api/user", (data) => {
-            if (!data) return;
+            if (!data) {
+                console.error("No data received in pullNewData()", data);
+                return;
+            }
             Dispatcher.dispatch({
                 type: "DATA_REST_USER_LIST",
                 users: data.Users

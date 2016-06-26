@@ -44,7 +44,7 @@ export default class UsersBody extends React.Component {
     onUserSelect(user) {
         console.log("onUserSelect", user);
         this.setState({selectedUser:user});
-        UserActions.selectUser(user);
+        UserActions.populateUser(user);
     }
     
     render() {
