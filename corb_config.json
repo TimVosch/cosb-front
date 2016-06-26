@@ -1,4 +1,7 @@
 {
+    "backend": {
+        "backendEndPoint": "localhost:8000"
+    },
     "defaultPageTitle": "Corb Panel",
     "autoSearchDelay": 400
 }
