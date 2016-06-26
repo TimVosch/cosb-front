@@ -2,10 +2,10 @@
 
 - Clone the repository
 - Execute the `npm install --dev` command to install the dependencies
-- Enable [Cross-Origin Resource Sharing (CORS)][1] in your browser of choice (through an extension)^1^.
+- Enable [Cross-Origin Resource Sharing (CORS)][1] in your browser of choice (through an extension)\*.
 - Either execute the `npm run dev` command to setup a development suite
 
-^1^ **Note** Allowing every Cross-Origin request can be dangerous, make sure to disable the plugin after development!
+\* **Note** Allowing every Cross-Origin request can be dangerous, make sure to disable the plugin after development!
 
 Development
 ----
