@@ -2,7 +2,7 @@ var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path');
-var CorbConfiguration = require('./corb_config.json');
+var CosbConfiguration = require('./cosb_config.json');
 
 module.exports = {
   context: path.join(__dirname, "src"),
@@ -30,19 +30,19 @@ module.exports = {
   },
   plugins: debug ? [
     new HtmlWebpackPlugin({
-      title: CorbConfiguration.defaultPageTitle,
+      title: CosbConfiguration.defaultPageTitle,
       filename: 'index.html',
       template: './index.html'
     }),
     new webpack.DefinePlugin({
-      "corb.config": CorbConfiguration
+      "cosb.config": CosbConfiguration
     })
   ] : [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
     new webpack.DefinePlugin({
-      "corb.config": CorbConfiguration
+      "cosb.config": CosbConfiguration
     })
   ],
 };

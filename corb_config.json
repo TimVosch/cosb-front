@@ -3,6 +3,6 @@
         "url": "localhost:8000/api/",
         "version": "v1"
     },
-    "defaultPageTitle": "Corb Panel",
+    "defaultPageTitle": "Cosb Panel",
     "autoSearchDelay": 400
 }
