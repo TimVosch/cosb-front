@@ -1,6 +1,6 @@
 {
     "api": {
-        "url": "localhost:8000/api/", // contains trailing slash!
+        "url": "localhost:8000/api/",
         "version": "v1"
     },
     "defaultPageTitle": "Corb Panel",
